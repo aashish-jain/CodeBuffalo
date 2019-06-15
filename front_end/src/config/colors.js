@@ -1,0 +1,11 @@
+export const CONTAINER_BG = '#2d2d2d';
+export const VEHICLE_BG = '#1d1d1d';
+export const VEHICLE_NAME_COLOR = '#bb86fc';
+export const VEHICLE_MODEL_COLOR = '#664b86';
+export const VEHICLE_ITEM_ICON_COLOR = '#dcdcdc';
+export const VEHICLE_ITEM_INFO_COLOR = '#dcdcdc';
+export const BORDER_COLOR = '#1d1d1d';
+export const LABEL_COLOR = '#bb86fc';
+export const VALUE_COLOR = '#bb86fc';
+export const SHADOW_COLOR = '#c6c6c6';
+export const HEADER_TITLE_COLOR = '#bb86fc';
