@@ -1,1 +1,1 @@
-export const API_VEHICLE_BASE = 'https://swapi.co/api/vehicles/';
+export const API_VEHICLE_BASE = 'http://www.boredapi.com/api/activity/';

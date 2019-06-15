@@ -20,19 +20,17 @@ class Main extends React.Component {
     }
 
     async _getVehicles(url) {
-        if (this.state.nextPage !== null) {
-            try {
-                const data = await this._fetchVehicles(url);
-                const { next, results } = data;
-                this.setState({
-                    spinner: false,
-                    vehicles: [...this.state.vehicles, ...results],
-                    nextPage: next
-                });
-            } catch (err) {
-                console.error(err);
-            }
+        try {
+            const data = await this._fetchVehicles(url);
+            // const { next, results } = data;
+            this.setState({
+                spinner: false,
+                vehicles: [data]
+            });
+        } catch (err) {
+            console.error(err);
         }
+
     }
 
     _fetchVehicles(url) {
@@ -50,7 +48,6 @@ class Main extends React.Component {
         return (
             <Container>
                 <StatusBar barStyle='light-content' />
-
                 <View style={{ flex: 1 }}>
                     <FlatList
                         data={this.state.vehicles}
@@ -61,15 +58,13 @@ class Main extends React.Component {
                                 data={item}
                                 onPress={() =>
                                     this.props.navigation.navigate('vehicle', {
-                                        title: item.name,
+                                        title: item.activity,
                                         url: item.url
                                     })
                                 }
                             />
                         )}
                         showsVerticalScrollIndicator={false}
-                        onEndReachedThreshold={0.5}
-                        onEndReached={() => this._getVehicles(this.state.nextPage)}
                     />
                 </View>
                 <Spinner enable={this.state.spinner} />

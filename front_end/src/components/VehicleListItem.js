@@ -22,7 +22,7 @@ const SCREEN_W = Dimensions.get('screen').width;
 const ICON_SIZE = 28;
 
 export default props => {
-    const { name, model, crew, passengers, cargo_capacity } = props.data;
+    const { activity, type } = props.data;
     return (
         <TouchableOpacity
             onPress={() => {
@@ -32,11 +32,11 @@ export default props => {
                 props.onPress();
             }}
             style={[styles.mainView, styles.shadow]}
-        >
+        >  
             <View style={[styles.row]}>
                 <View style={{ flex: 1, flexDirection: 'column' }}>
-                    <Text style={styles.nameText}>{name}</Text>
-                    <Text style={styles.modelText}>{model}</Text>
+                    <Text style={styles.nameText}>{activity}</Text>
+                    <Text style={styles.modelText}>{type}</Text>
                 </View>
             </View>
             <View style={[styles.row]}>
@@ -46,15 +46,12 @@ export default props => {
                         size={ICON_SIZE - 6}
                         style={styles.icon}
                     />
-                    <Text style={styles.countText}>{crew}</Text>
                 </View>
                 <View style={[styles.row, styles.infoContainer]}>
                     <Ionicons name='ios-people' size={ICON_SIZE} style={styles.icon} />
-                    <Text style={styles.countText}>{passengers}</Text>
                 </View>
                 <View style={[styles.row, styles.infoContainer]}>
                     <AntDesign name='dropbox' size={ICON_SIZE} style={styles.icon} />
-                    <Text style={styles.countText}>{cargo_capacity}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -83,12 +80,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     nameText: {
-        fontSize: 21,
+        fontSize: 16,
         fontWeight: '600',
         color: VEHICLE_NAME_COLOR
     },
     modelText: {
-        fontSize: 17,
+        fontSize: 14,
         color: VEHICLE_MODEL_COLOR
     },
     icon: {
