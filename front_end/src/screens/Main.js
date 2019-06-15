@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, FlatList, StatusBar } from 'react-native';
+import { View, FlatList, StatusBar, StyleSheet, TouchableHighlight } from 'react-native';
 import Container from '../components/Container';
 import VehicleListItem from '../components/VehicleListItem';
 import { API_VEHICLE_BASE } from '../config/api';
 import Spinner from '../components/Spinner';
+import { HEADER_BG } from '../config/colors';
+import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons';
 
 class Main extends React.Component {
     constructor(props) {
@@ -44,10 +46,19 @@ class Main extends React.Component {
         });
     }
 
+    _onpress() {
+
+    }
+
     render() {
         return (
             <Container>
                 <StatusBar barStyle='light-content' />
+                <TouchableHighlight style={styles.createButton}>
+                    <View >
+                        <FontAwesome name='plus-circle' size={35} style={styles.icon} onPress={() => console.log('Create button pressed')} />
+                    </View>
+                </TouchableHighlight>
                 <View style={{ flex: 1 }}>
                     <FlatList
                         data={this.state.vehicles}
@@ -59,7 +70,7 @@ class Main extends React.Component {
                                 onPress={() =>
                                     this.props.navigation.navigate('vehicle', {
                                         title: item.activity,
-                                        url: item.url
+                                        data: item
                                     })
                                 }
                             />
@@ -72,5 +83,17 @@ class Main extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    icon: {
+        color: HEADER_BG
+    },
+    createButton: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignSelf: 'flex-end',
+        padding: 8
+    }
+});
 
 export default Main;

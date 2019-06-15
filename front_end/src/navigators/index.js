@@ -2,7 +2,7 @@ import React from 'react';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import Main from '../screens/Main';
 import Vehicle from '../screens/Vehicle';
-import { LABEL_COLOR, VEHICLE_BG, HEADER_TITLE_COLOR } from '../config/colors';
+import { LABEL_COLOR, VEHICLE_BG, HEADER_TITLE_COLOR, HEADER_BG } from '../config/colors';
 
 const mainNaVigator = createStackNavigator({
     main: {
@@ -12,7 +12,7 @@ const mainNaVigator = createStackNavigator({
             headerTintColor: HEADER_TITLE_COLOR,
             headerBackTitle: null,
             headerStyle: {
-                backgroundColor: VEHICLE_BG,
+                backgroundColor: HEADER_BG,
                 borderBottomWidth: 0
             },
             headerTitleStyle: {
@@ -27,7 +27,7 @@ const mainNaVigator = createStackNavigator({
             headerTintColor: HEADER_TITLE_COLOR,
             headerBackTitle: null,
             headerStyle: {
-                backgroundColor: VEHICLE_BG,
+                backgroundColor: HEADER_BG,
                 borderBottomWidth: 0
             },
             headerTitleStyle: {
