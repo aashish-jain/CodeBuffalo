@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, StatusBar, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, FlatList, StatusBar, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import Container from '../components/Container';
 import VehicleListItem from '../components/VehicleListItem';
 import { API_VEHICLE_BASE } from '../config/api';
@@ -46,19 +46,21 @@ class Main extends React.Component {
         });
     }
 
-    _onpress() {
-
+    handleClick = () => {
+        Alert.alert(
+            'Create Event Triggered',
+        );
     }
 
     render() {
         return (
             <Container>
                 <StatusBar barStyle='light-content' />
-                <TouchableHighlight style={styles.createButton}>
+                <TouchableOpacity style={styles.createButton}>
                     <View >
-                        <FontAwesome name='plus-circle' size={35} style={styles.icon} onPress={() => console.log('Create button pressed')} />
+                        <FontAwesome name='plus-circle' size={35} style={styles.icon} onPress={this.handleClick} />
                     </View>
-                </TouchableHighlight>
+                </TouchableOpacity>
                 <View style={{ flex: 1 }}>
                     <FlatList
                         data={this.state.vehicles}

@@ -3,6 +3,7 @@ import { View, StatusBar, Text } from 'react-native';
 import Container from '../components/Container';
 import Spinner from '../components/Spinner';
 import DescriptionRow from '../components/DescriptionRow';
+import DetailPage from '../components/DetailPage';
 
 class Vehicle extends React.Component {
     constructor(props) {
@@ -19,23 +20,25 @@ class Vehicle extends React.Component {
     }
 
     _renderRow(label, value) {
-        return <View><Text>{label} :  {value} </Text></View>;
+        return <DescriptionRow label={label} value={value}></DescriptionRow>;
     }
 
     render() {
-
         const { activity, type, participants, price, accessibility } = this.state.data;
         return (
-            <Container>
-                <StatusBar barStyle='light-content' />
-                {this._renderRow('Activity', activity)}
-                {this._renderRow('Type', type)}
-                {this._renderRow('Participants', participants)}
-                {this._renderRow('price', price)}
-                {this._renderRow('Accessibility', accessibility)}
-                <Spinner enable={this.state.spinner} />
-            </Container>
+            <DetailPage />
         );
+        //   return (
+        //       <Container>
+        //           <StatusBar barStyle='light-content' />
+        //           {this._renderRow('Activity', activity)}
+        //           {this._renderRow('Type', type)}
+        //           {this._renderRow('Participants', participants)}
+        //           {this._renderRow('price', price)}
+        //           {this._renderRow('Accessibility', accessibility)}
+        //           <Spinner enable={this.state.spinner} />
+        //       </Container>
+        //   );
     }
 }
 

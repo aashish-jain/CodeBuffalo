@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { BORDER_COLOR, LABEL_COLOR, VALUE_COLOR } from '../config/colors';
+import { Image } from 'react-native';
 
 export default props => (
     <View style={styles.row}>
