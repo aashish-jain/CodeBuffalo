@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon start server.js"
+    "start": "node src/server.js",
+    "server": "nodemon start src/server.js"
   },
   "author": "Aashish Jain",
   "license": "MIT",
@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.1",
+    "graphql-yoga": "^1.17.4",
     "nodemon": "^1.19.1"
   }
 }
