@@ -1,7 +1,8 @@
 module.exports = {
   Query: {
-    activity: (_, __, { dataSources }) => {
-      return dataSources.BoredAPI.getActivity();
+    activity: (_, activity, { dataSources }) => {
+      if (activity.id == 0) return dataSources.BoredAPI.getActivity();
+      else return dataSources.BoredAPI.getActivityById(activity.id);
     }
   }
 };
