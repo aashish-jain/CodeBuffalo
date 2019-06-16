@@ -9,24 +9,26 @@ class Vehicle extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: props,
+            data: [],
             spinner: false
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const propsData = this.props.navigation.getParam('data');
         this.setState({ spinner: false, data: propsData });
     }
 
-    _renderRow(label, value) {
-        return <DescriptionRow label={label} value={value}></DescriptionRow>;
+    _renderRow(data) {
+        console.log(data);
+        return <DetailPage data={data} />;
+        //  return <DescriptionRow label={label} value={value}></DescriptionRow>;
     }
 
     render() {
         const { activity, type, participants, price, accessibility } = this.state.data;
         return (
-            <DetailPage />
+            this._renderRow(this.state.data)
         );
         //   return (
         //       <Container>
