@@ -20,6 +20,20 @@ const BoredType = new GraphQLObjectType({
     })
 });
 
+const ActivityType = new GraphQLObjectType({
+    name: 'Activity',
+    fields: () => ({
+        activity: { type: GraphQLString },
+        accessibility: { type: GraphQLFloat },
+        type: { type: GraphQLString },
+        participants: { type: GraphQLInt },
+        price:{ type: GraphQLFloat },
+        link: { type: GraphQLString },
+        key: { type: GraphQLInt }
+    })
+});
+
+
 const RootQuery = new GraphQLObjectType({
     name : 'RootQuertType',
     fields : {
