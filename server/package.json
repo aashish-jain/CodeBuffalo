@@ -1,0 +1,20 @@
+{
+  "name": "ntertain",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.5.0",
+    "apollo-server": "^2.6.3",
+    "graphql": "^14.3.1",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "debug": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aashish Jain",
+  "license": "MIT"
+}
