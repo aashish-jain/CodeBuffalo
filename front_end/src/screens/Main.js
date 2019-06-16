@@ -6,6 +6,29 @@ import { API_VEHICLE_BASE } from '../config/api';
 import Spinner from '../components/Spinner';
 import { HEADER_BG } from '../config/colors';
 import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
+const GET_LAUNCHES = gql`
+  query launchList($after: String) {
+    launches(after: $after) {
+      cursor
+      hasMore
+      launches {
+        id
+        isBooked
+        rocket {
+          id
+          name
+        }
+        mission {
+          name
+          missionPatch
+        }
+      }
+    }
+  }
+`;
 
 class Main extends React.Component {
     constructor(props) {
