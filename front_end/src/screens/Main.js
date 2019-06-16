@@ -1,9 +1,25 @@
 import React from 'react';
-import { View, FlatList, StatusBar } from 'react-native';
+import { View, FlatList, StatusBar, StyleSheet, TouchableOpacity, Alert,Fragment } from 'react-native';
 import Container from '../components/Container';
 import VehicleListItem from '../components/VehicleListItem';
 import { API_VEHICLE_BASE } from '../config/api';
 import Spinner from '../components/Spinner';
+import { HEADER_BG } from '../config/colors';
+import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
+const GET_ACTIVITIES = gql`
+  query {
+      activity{
+        activity
+        price
+        participants
+        accessibility
+        type
+        id
+}
+}`;
 
 class Main extends React.Component {
     constructor(props) {
@@ -20,19 +36,17 @@ class Main extends React.Component {
     }
 
     async _getVehicles(url) {
-        if (this.state.nextPage !== null) {
-            try {
-                const data = await this._fetchVehicles(url);
-                const { next, results } = data;
-                this.setState({
-                    spinner: false,
-                    vehicles: [...this.state.vehicles, ...results],
-                    nextPage: next
-                });
-            } catch (err) {
-                console.error(err);
-            }
+        try {
+            const data = await this._fetchVehicles(url);
+            // const { next, results } = data;
+            this.setState({
+                spinner: false,
+                vehicles: [data]
+            });
+        } catch (err) {
+            console.error(err);
         }
+
     }
 
     _fetchVehicles(url) {
@@ -46,12 +60,46 @@ class Main extends React.Component {
         });
     }
 
+    handleClick = () => {
+        Alert.alert(
+            'Create Event Triggered',
+        );
+    }
+
     render() {
         return (
             <Container>
                 <StatusBar barStyle='light-content' />
-
+                <TouchableOpacity style={styles.createButton}>
+                    <View >
+                        <FontAwesome name='plus-circle' size={35} style={styles.icon} onPress={() =>
+                            this.props.navigation.navigate('create')
+                        } />
+                    </View>
+                </TouchableOpacity>
                 <View style={{ flex: 1 }}>
+                    <Query query={GET_ACTIVITIES}>
+                    {
+                        ({loading,error,data})=>{
+                            if(loading) console.log("loading");
+                            if(error) console.log("error");
+                            if(data && data.activity)
+                            return (
+                                <View>
+                                    <VehicleListItem data={data.activity}  onPress={() =>
+                                    this.props.navigation.navigate('vehicle', {
+                                        title: data.activity.activity,
+                                        data: data.activity
+                                    })
+                                }/>
+                                </View>
+                                );
+                            else 
+                            return (<View></View>);
+                        }
+                    }
+                    </Query>
+                
                     <FlatList
                         data={this.state.vehicles}
                         extraData={this.state}
@@ -61,15 +109,13 @@ class Main extends React.Component {
                                 data={item}
                                 onPress={() =>
                                     this.props.navigation.navigate('vehicle', {
-                                        title: item.name,
-                                        url: item.url
+                                        title: item.activity,
+                                        data: item
                                     })
                                 }
                             />
                         )}
                         showsVerticalScrollIndicator={false}
-                        onEndReachedThreshold={0.5}
-                        onEndReached={() => this._getVehicles(this.state.nextPage)}
                     />
                 </View>
                 <Spinner enable={this.state.spinner} />
@@ -77,5 +123,17 @@ class Main extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    icon: {
+        color: HEADER_BG
+    },
+    createButton: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignSelf: 'flex-start',
+        padding: 8
+    }
+});
 
 export default Main;
