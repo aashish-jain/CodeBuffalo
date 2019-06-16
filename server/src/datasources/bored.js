@@ -22,13 +22,10 @@ class BoredAPI extends RESTDataSource {
 
   async getActivity() {
     const response = await this.get("activity");
+    console.log("hit");
     return this.activityReducer(response);
   }
 
-  async getActivity() {
-    const response = await this.get("activity");
-    return this.activityReducer(response);
-  }
 
   async getActivityById(activityId) {
     const response = await this.get("activity", {"key" : activityId});

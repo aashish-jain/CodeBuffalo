@@ -9,7 +9,7 @@ import { ApolloProvider } from 'react-apollo';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: 'http://localhost:4000/'
+  uri: 'http://192.168.1.155:4000/'
 });
 const client = new ApolloClient({
   cache,

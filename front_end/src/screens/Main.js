@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, StatusBar, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, FlatList, StatusBar, StyleSheet, TouchableOpacity, Alert,Fragment } from 'react-native';
 import Container from '../components/Container';
 import VehicleListItem from '../components/VehicleListItem';
 import { API_VEHICLE_BASE } from '../config/api';
@@ -9,26 +9,17 @@ import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const GET_LAUNCHES = gql`
-  query launchList($after: String) {
-    launches(after: $after) {
-      cursor
-      hasMore
-      launches {
+const GET_ACTIVITIES = gql`
+  query {
+      activity{
+        activity
+        price
+        participants
+        accessibility
+        type
         id
-        isBooked
-        rocket {
-          id
-          name
-        }
-        mission {
-          name
-          missionPatch
-        }
-      }
-    }
-  }
-`;
+}
+}`;
 
 class Main extends React.Component {
     constructor(props) {
@@ -87,6 +78,28 @@ class Main extends React.Component {
                     </View>
                 </TouchableOpacity>
                 <View style={{ flex: 1 }}>
+                    <Query query={GET_ACTIVITIES}>
+                    {
+                        ({loading,error,data})=>{
+                            if(loading) console.log("loading");
+                            if(error) console.log("error");
+                            if(data && data.activity)
+                            return (
+                                <View>
+                                    <VehicleListItem data={data.activity}  onPress={() =>
+                                    this.props.navigation.navigate('vehicle', {
+                                        title: data.activity.activity,
+                                        data: data.activity
+                                    })
+                                }/>
+                                </View>
+                                );
+                            else 
+                            return (<View></View>);
+                        }
+                    }
+                    </Query>
+                
                     <FlatList
                         data={this.state.vehicles}
                         extraData={this.state}

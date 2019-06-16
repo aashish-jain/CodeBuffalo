@@ -32,7 +32,7 @@ class DetailPage extends Component {
                     <Card style={{ flex: 0 }}>
                         <CardItem>
                             <Body>
-                                <Image source={require('../images/hobby.png')} style={Styles.imageStyle} />
+                                <Image source={require('../images/activity.gif')} style={Styles.imageStyle} />
                                 <Text style={Styles.title}>{activity}</Text>
                                 <View style={Styles.voteRow}>
                                     <Button transparent >
