@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Dimensions, StyleSheet, Fragment } from 'react-native';
+import { View, Image, Dimensions, StyleSheet, Fragment, Alert } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
 import { GREEN_TEXT } from '../config/colors';
 import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons';
@@ -16,6 +16,12 @@ class DetailPage extends Component {
         this.state = {
             values: props.data
         }
+    }
+
+    handleClick = () => {
+        Alert.alert(
+            'Join Requested. You will be notified soon!!!',
+        );
     }
 
     render() {
@@ -72,8 +78,29 @@ class DetailPage extends Component {
                                         <Text style={Styles.Category}> Price: {price}</Text>
                                     </View>
                                 </View>
+                                <View style={Styles.row}>
+                                    <FontAwesome
+                                        name='info-circle'
+                                        size={ICON_SIZE - 6}
+                                        style={{ color: GREEN_TEXT }}
+                                    />
+                                    <Text style={Styles.Category}>Description:</Text>
+                                </View>
+                                <View>
+                                    <Text style={{ flex: 1, flexWrap: 'wrap' }}>
+                                        This is a description of the activity which includes any detail about the activity that the participant should be aware of.
+                                        It includes details like location, TIme and other related stuffs.
+                                    </Text>
+                                </View>
                             </Body>
                         </CardItem>
+                    </Card>
+                    <Card>
+                        <Content>
+                            <Button full danger onPress={this.handleClick}>
+                                <Text>Join Hobby</Text>
+                            </Button>
+                        </Content>
                     </Card>
                 </Content>
             </Container>
