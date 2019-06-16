@@ -34,17 +34,17 @@ Please use snack.expo to view the application.
 ## Screenshots :
 <img src="screenshots/img0.png"
      alt="Markdown Monster icon"
-     style="float: center; margin-right: 10px;" height="400" align="center" /> <br>
+     style="float: center; margin-right: 10px;" height="400" align="center" />
 <img src="screenshots/img1.png"
      alt="Markdown Monster icon"
-     style="float: center; margin-right: 10px;" height="400" align="center" /> <br>
+     style="float: center; margin-right: 10px;" height="400" align="center" />
 <img src="screenshots/img2.png"
      alt="Markdown Monster icon"
-     style="float: center; margin-right: 10px;" height="400" align="center" /> <br>
+     style="float: center; margin-right: 10px;" height="400" align="center" />
 <img src="screenshots/img3.png"
      alt="Markdown Monster icon"
-     style="float: center; margin-right: 10px;" height="400" align="center" /> <br>
+     style="float: center; margin-right: 10px;" height="400" align="center" />
 <img src="screenshots/img4.png"
      alt="Markdown Monster icon"
-     style="float: center; margin-right: 10px;" height="400" align="center" /> <br>
+     style="float: center; margin-right: 10px;" height="400" align="center" />
      
