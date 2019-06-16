@@ -1,4 +1,4 @@
-# CodeBuffalo
+# CodeBuffalo (Team 7)
 
 ### Idea : 
 To let people decide what they would like to do based on their interests.
