@@ -58,7 +58,9 @@ class Main extends React.Component {
                 <StatusBar barStyle='light-content' />
                 <TouchableOpacity style={styles.createButton}>
                     <View >
-                        <FontAwesome name='plus-circle' size={35} style={styles.icon} onPress={this.handleClick} />
+                        <FontAwesome name='plus-circle' size={35} style={styles.icon} onPress={() =>
+                            this.props.navigation.navigate('create')
+                        } />
                     </View>
                 </TouchableOpacity>
                 <View style={{ flex: 1 }}>
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     createButton: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        alignSelf: 'flex-end',
+        alignSelf: 'flex-start',
         padding: 8
     }
 });
